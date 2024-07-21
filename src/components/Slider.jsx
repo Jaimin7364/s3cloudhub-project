@@ -6,12 +6,20 @@ import MainCard from "./Main-card";
 
 const Slider = () => {
   return (
-    <div className="h-[50vh] sm:h-[80vh] xl:h-[80vh] 2xl:h-[80vh]">
+       <>
+    <div className="hidden lg:flex lg:h-[80vh] m:h-[80vh] xl:flex 2xl:flex xl:h-[80vh] 2xl:h-[80vh]">
       <Carousel>
       <div
-      className="flex h-full items-center bg-cover bg-center bg-no-repeat dark:bg-gray-700 dark:text-white bg-slate-400">
-        <div className="relative lg:w-1/2 h-full bg-white">
+      className="flex h-full items-center bg-cover bg-center bg-no-repeat dark:bg-gray-700 dark:text-white ">
+        <div className="relative m:w-[100vh] lg:w-2/3 h-full bg-white">
           <MainCard />
+        </div>
+        <div className="m:hidden lg:flext xl:flex 2xl:flex lg:w-1/3">
+          <img
+            className="object-cover w-full h-full"
+            src={backgroundImage}
+            alt="background"
+          />
         </div>
     </div>
     <div
@@ -26,7 +34,14 @@ const Slider = () => {
     </div>
       </Carousel>
     </div>
+    <div
+    className="l:hidden lg:hidden 2xl:hidden flex  h-full items-center bg-cover bg-center bg-no-repeat dark:bg-gray-700 dark:text-white ">
+      <div className="relative w-[100vh] h-full bg-white">
+        <MainCard />
+      </div>
+      </div>
+      </>
   )
 }
 
-export default Slider
+export default Slider;
