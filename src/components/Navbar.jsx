@@ -28,11 +28,11 @@ const Navbar = () => {
                 </a>
 
                 {/* Search input on desktop screen */}
-                <div className="hidden mx-10 m:block">
+                <div className="hidden mx-10 w-[340px] m:block">
                   <div className="relative">
                     <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                       <svg
-                        className="w-5 h-5 text-gray-400"
+                        className="w-5 h-5  text-blue-700"
                         viewBox="0 0 24 24"
                         fill="none"
                       >
@@ -96,13 +96,13 @@ const Navbar = () => {
 
             {/* Mobile Menu open: "block", Menu closed: "hidden" */}
             <div
-              className={`absolute inset-x-0 z-20 w-full px-6 py-2 transition-all duration-300 ease-in-out bg-white top-24 dark:bg-gray-800 l:mt-0 l:p-0 l:top-0 l:relative l:bg-transparent l:w-auto l:opacity-100 l:translate-x-0 l:flex l:items-center ${
+              className={`absolute inset-x-0 z-20 w-full px-6 py-2 transition-all duration-300 ease-in-out bg-white top-20 dark:bg-gray-800 l:mt-0 l:p-0 l:top-0 l:relative l:bg-transparent l:w-auto l:opacity-100 l:translate-x-0 l:flex l:items-center ${
                 isOpen ? "translate-x-0 opacity-100" : "opacity-0 -translate-x-full"
               }`}
             >
               <div className="flex items-center flex-col lg:flex-row lg:mx-1" >
                 <a
-                  className="text-md leading-5 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:mx-4 md:my-0"
+                  className="text-md leading-5  text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:mx-4 md:my-0"
                   href="#"
                 >
                   Courses
@@ -120,13 +120,13 @@ const Navbar = () => {
                   Contact Us
                 </a>
                 <a
-                  className=" text-md leading-5 text-blue-600 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-600 hover:bg-blue-100 md:mx-4 md:my-0 border border-blue-600 rounded-md px-4 py-2"
+                  className=" text-md leading-5 text-white bg-blue-600 transition-colors duration-300 transform dark:text-white hover:bg-blue-500 md:mx-4 md:my-0 border border-blue-800 rounded-md px-4 py-2"
                   href="#"
                 >
                   Sign In
                 </a>
                 <a
-                  className="text-md leading-5 text-blue-600 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-600 hover:bg-blue-100 md:mx-4 md:my-0 border border-blue-600 rounded-md px-4 py-2"
+                  className=" text-md leading-5 text-white bg-blue-600 transition-colors duration-300 transform dark:text-gray-200 hover:bg-blue-500 md:mx-4 md:my-0 border border-blue-800 rounded-md px-4 py-2"
                   href="#"
                 >
                   Sign Up
