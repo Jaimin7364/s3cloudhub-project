@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/s3cloudhub-project/static/css/main.88ceec9b.css",
+    "main.js": "/s3cloudhub-project/static/js/main.9509748b.js",
+    "static/media/background.png": "/s3cloudhub-project/static/media/background.387e021b486e12ab323c.png",
+    "static/media/s3_img_1.jpg": "/s3cloudhub-project/static/media/s3_img_1.90aed05a4c4576700674.jpg",
+    "static/media/s3-logo.png": "/s3cloudhub-project/static/media/s3-logo.933db8fcd500d1ddf523.png",
+    "index.html": "/s3cloudhub-project/index.html",
+    "main.88ceec9b.css.map": "/s3cloudhub-project/static/css/main.88ceec9b.css.map",
+    "main.9509748b.js.map": "/s3cloudhub-project/static/js/main.9509748b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.88ceec9b.css",
+    "static/js/main.9509748b.js"
+  ]
+}
