@@ -9,7 +9,7 @@ const Navbar = () => {
 
   const handleMenuClick = (menu) => {
     setActiveMenu(menu);
-    setIsOpen(false); // Optional: Close the menu when an item is clicked
+    setIsOpen(false); 
   };
 
   return (
