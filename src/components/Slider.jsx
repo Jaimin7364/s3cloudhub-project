@@ -41,6 +41,8 @@ const Slider = () => {
         <MainCard />
       </div>
       </div>
+      <hr className="border-gray-300" />
+
       </>
   )
 }
