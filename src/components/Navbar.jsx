@@ -6,7 +6,7 @@ import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [menu, setMenu] = useState("home");
+  const [menu, setMenu] = useState(<NavLink to="/"></NavLink>);
 
   return (
     <>
