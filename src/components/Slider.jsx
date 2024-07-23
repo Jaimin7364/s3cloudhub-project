@@ -8,7 +8,7 @@ import img1 from '../../src/assets/images/s3_img_1.jpg';
 const Slider = () => {
   return (
        <>
-    <div className="hidden lg:flex lg:h-[53vh] m:h-[80vh] xl:flex 2xl:flex xl:h-[80vh] 2xl:h-[70vh]">
+    <div className="hidden lg:flex lg:h-[70vh] m:h-[80vh] xl:flex 2xl:flex xl:h-[80vh] 2xl:h-[70vh]">
       <Carousel>
       <div
       className="flex h-full items-center bg-cover bg-center bg-no-repeat dark:bg-gray-700 dark:text-white ">
