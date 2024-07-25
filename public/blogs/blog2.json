@@ -1,19 +1,32 @@
 {
-    "title": "Python Course in Hindi | Python Tutorial",
-    "date": "2024-07-24",
-  "head1": "",
-  "text1": "",
-  "head2": "",
-  "text2": "",
-  "head3": "",
-  "text3": "",
-  "head4": "",
-  "text4": "",
-  "text5": "",
-  "image": "https://miro.medium.com/v2/resize:fit:720/format:webp/0*BCZ6BmwNjNdmGFyZ.jpeg",
-  "head6": "",
-  "video1": "",
-  "video2": "",
-  "video3": "",
-  "content": ""
-  }
+  "title": "Python Course in Hindi | Python Tutorial",
+  "date": "2024-07-24",
+  "sections": [
+    {
+      "heading": "",
+      "text": "",
+      "videos": []
+    },
+    {
+      "heading": "",
+      "text": "",
+      "videos": [ ]
+    },
+    {
+      "heading": "",
+      "text": "",
+      "videos": []
+    },
+    {
+      "heading": "",
+      "text": "",
+      "videos": []
+    },
+    {
+      "heading": "",
+      "text": "",
+      "videos": []
+    }
+  ],
+  "image": "https://miro.medium.com/v2/resize:fit:720/format:webp/0*BCZ6BmwNjNdmGFyZ.jpeg"
+}
