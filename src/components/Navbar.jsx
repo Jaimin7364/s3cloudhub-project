@@ -96,12 +96,18 @@ const Navbar = () => {
                   </li>
                 </ul>
 
-                <a className="text-md leading-5 text-white bg-blue-600 transition-colors duration-300 transform dark:text-white hover:bg-blue-500 md:mx-4 md:my-0 border border-blue-800 rounded-md px-4 py-2" href="#">
+                <NavLink
+                  to="/login"
+                  className="text-md leading-5 bg-gradient-to-r from-blue-500 to-teal-500 text-white font-semibold rounded-lg shadow-md shadow-blue-500/50 hover:shadow-lg hover:shadow-blue-500/30 active:translate-y-1 active:shadow-none transition-transform transform focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 md:mx-4 md:my-0 px-4 py-2"
+                >
                   Sign In
-                </a>
-                <a className="text-md leading-5 text-white bg-blue-600 transition-colors duration-300 transform dark:text-gray-200 hover:bg-blue-500 md:mx-4 md:my-0 border border-blue-800 rounded-md px-4 py-2" href="#">
+                </NavLink>
+                <Link
+                  to="/signup"
+                  className="text-md leading-5 text-white bg-blue-600 transition-colors duration-300 transform dark:text-gray-200 hover:bg-blue-500 md:mx-4 md:my-0 border border-blue-800 rounded-md px-4 py-2"
+                >
                   Sign Up
-                </a>
+                </Link>
               </div>
 
               <div className="my-4 md:hidden">

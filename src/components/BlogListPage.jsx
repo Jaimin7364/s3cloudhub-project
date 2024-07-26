@@ -59,7 +59,7 @@ const BlogListPage = () => {
             <div className="p-6">
               <h2 className="text-xl font-semibold mb-3">{blog.title}</h2>
               <p className="text-gray-500 mb-3">{new Date(blog.date).toLocaleDateString()}</p>
-              <Link to={`/blogs/${blog.id}`} className="text-white bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded">
+              <Link to={`/blogs/${blog.id}`} className="bg-gradient-to-r from-blue-500 to-teal-500 text-white font-semibold rounded-lg shadow-md shadow-blue-500/50 hover:shadow-lg hover:shadow-blue-500/30 active:translate-y-1 active:shadow-none transition-transform transform focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 px-4 py-2">
                 Read More
               </Link>
             </div>

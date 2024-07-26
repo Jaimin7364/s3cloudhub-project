@@ -1,19 +1,19 @@
+// src/App.jsx
 import './App.css';
 import Blogs from './pages/Blogs';
 import Courses from './pages/Courses';
 import Home from './pages/Home';
 import Cart from './pages/Cart';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import CourseVideo from './pages/CourseVideo';
-import Navbar from './components/Navbar';
 import BlogListPage from './components/BlogListPage';
+import Layout from './components/Layout';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div>
-      <Router>
-        <Navbar />
+    <Router>
+      <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/courses" element={<Courses />} />
@@ -23,8 +23,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/coursevideo" element={<CourseVideo />} />
         </Routes>
-      </Router>
-    </div>
+      </Layout>
+    </Router>
   );
 }
 
