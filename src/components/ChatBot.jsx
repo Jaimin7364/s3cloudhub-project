@@ -3,7 +3,7 @@ import axios from 'axios';
 import { MessageCircle, Send, X } from 'lucide-react';
 
 const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent';
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const GEMINI_API_KEY = process.env.REACT_APP_GEMINI_API_KEY;
 
 const ChatbotWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
