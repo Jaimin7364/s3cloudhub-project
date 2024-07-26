@@ -9,9 +9,12 @@ import CourseVideo from './pages/CourseVideo';
 import BlogListPage from './components/BlogListPage';
 import Layout from './components/Layout';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ChatbotWidget from './components/ChatBot';
 
 function App() {
   return (
+    <>
+    <ChatbotWidget />
     <Router>
       <Layout>
         <Routes>
@@ -25,6 +28,7 @@ function App() {
         </Routes>
       </Layout>
     </Router>
+    </>
   );
 }
 
