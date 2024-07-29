@@ -3,7 +3,7 @@ import { Carousel } from "flowbite-react";
 import React from "react";
 import backgroundImage from '../../src/assets/images/background.png';
 import MainCard from "./Main-card";
-import img1 from '../../src/assets/images/s3_img_1.jpg';
+import img1 from '../../src/assets/images/s3_video_1.mp4';
 
 const Slider = () => {
   return (
@@ -16,11 +16,9 @@ const Slider = () => {
           <MainCard />
         </div>
         <div className="m:hidden xl:flex 2xl:flex lg:flex lg:w-1/3">
-          <img
-            className="object-cover w-full h-full"
-            src={img1}
-            alt="background"
-          />
+          <video className="object-cover w-full h-full"autoplay loop alt="background">
+          <source src={img1} type="video/mp4" />
+          </video>
         </div>
     </div>
     <div
