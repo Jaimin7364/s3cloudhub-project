@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { MessageCircle, Send, X } from 'lucide-react';
+import { MessageCircle, Send, X, RefreshCw, Clipboard } from 'lucide-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent';
 const GEMINI_API_KEY = process.env.REACT_APP_GEMINI_API_KEY;
@@ -69,6 +69,46 @@ const ChatbotWidget = () => {
     setIsLoading(false);
   };
 
+  const handleNewChat = () => {
+    setMessages([]); // Clear messages
+    setInput(''); // Clear input field
+    setIsLoading(false); // Ensure loading is stopped
+  };
+
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('Code copied to clipboard');
+    }).catch(err => {
+      console.error('Could not copy text: ', err);
+    });
+  };
+
+  const renderMessage = (message) => {
+    // Split message by triple backticks to identify code blocks
+    const parts = message.text.split(/```/);
+    return parts.map((part, index) => (
+      index % 2 === 0 ? (
+        <div key={index} className="mb-2 p-2 bg-gray-100 rounded-md shadow-sm">
+          {part.split('\n').map((line, i) => (
+            <p key={i} className="mb-1">{line}</p>
+          ))}
+        </div>
+      ) : (
+        <div key={index} className="relative mb-2">
+          <button
+            className="absolute top-1 right-1 p-1 bg-gray-800 text-white rounded-md"
+            onClick={() => copyToClipboard(part.trim())}
+          >
+            <Clipboard size={16} />
+          </button>
+          <SyntaxHighlighter language="javascript" style={dracula}>
+            {part.trim()}
+          </SyntaxHighlighter>
+        </div>
+      )
+    ));
+  };
+
   return (
     <div className="fixed bottom-4 right-4 z-50">
       {!isOpen && (
@@ -81,26 +121,32 @@ const ChatbotWidget = () => {
       )}
       {isOpen && (
         <div className="bg-white rounded-lg shadow-xl w-96 h-[500px] flex flex-col">
-          <div className="bg-blue-500 text-white p-4 rounded-t-lg flex justify-between items-center">
-            <h3 className="font-bold">S3CloudHub AI</h3>
+          <div className="bg-blue-500 text-white p-4 rounded-t-lg flex items-center">
+            <button
+              onClick={handleNewChat}
+              className="text-white hover:text-gray-200 mr-2"
+              title="New Chat"
+            >
+              <RefreshCw size={20} />
+            </button>
+            <h3 className="font-bold flex-grow">S3CloudHub AI</h3>
             <button onClick={() => setIsOpen(false)} className="text-white hover:text-gray-200">
               <X size={20} />
             </button>
           </div>
-          <div className="flex-1 overflow-y-auto p-4">
-            {messages.map((message, index) => (
-              <div key={index} className={`mb-2 ${message.sender === 'user' ? 'text-right' : 'text-left'}`}>
-                {message.sender === 'bot' && message.text.includes('```') ? (
-                  <SyntaxHighlighter language="javascript" style={coy}>
-                    {message.text.replace(/```/g, '')}
-                  </SyntaxHighlighter>
-                ) : (
-                  <span className={`inline-block p-2 rounded-lg ${message.sender === 'user' ? 'bg-blue-100' : 'bg-gray-200'}`}>
-                    {message.text}
-                  </span>
-                )}
+          <div className="flex-1 overflow-y-auto p-4 bg-gray-50 relative">
+            {messages.length === 0 ? (
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-600">
+                <p className="text-lg font-semibold">Welcome to S3CloudHub</p>
+                <p className="mt-2 text-gray-500">How can I assist you today?</p>
               </div>
-            ))}
+            ) : (
+              messages.map((message, index) => (
+                <div key={index} className={`mb-2 ${message.sender === 'user' ? 'text-right' : 'text-left'}`}>
+                  {renderMessage(message)}
+                </div>
+              ))
+            )}
             {isLoading && (
               <div className="mb-2 p-2 bg-yellow-100 text-yellow-700 rounded">
                 Thinking...
@@ -108,8 +154,8 @@ const ChatbotWidget = () => {
             )}
             <div ref={messagesEndRef} />
           </div>
-          <div className="p-4 border-t">
-            <div className="flex items-center">
+          <div className="p-4 border-t flex items-center">
+            <div className="flex-1 flex items-center">
               <input
                 type="text"
                 value={input}
