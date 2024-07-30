@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { MessageCircle, Send, X, RefreshCw, Clipboard, ArrowDownCircle } from 'lucide-react';
+import { MessageCircle, Send, X, RefreshCw, Clipboard } from 'lucide-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -12,32 +12,11 @@ const ChatbotWidget = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [isAtBottom, setIsAtBottom] = useState(true);
   const messagesEndRef = useRef(null);
-  const chatContainerRef = useRef(null);
 
   const scrollToBottom = () => {
-    if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-    }
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
-
-  const handleScroll = () => {
-    if (chatContainerRef.current) {
-      const { scrollTop, scrollHeight, clientHeight } = chatContainerRef.current;
-      setIsAtBottom(scrollTop + clientHeight >= scrollHeight - 5);
-    }
-  };
-
-  useEffect(() => {
-    const container = chatContainerRef.current;
-    if (container) {
-      container.addEventListener('scroll', handleScroll);
-      return () => {
-        container.removeEventListener('scroll', handleScroll);
-      };
-    }
-  }, [messages]);
 
   useEffect(() => {
     scrollToBottom();
@@ -141,7 +120,7 @@ const ChatbotWidget = () => {
         </button>
       )}
       {isOpen && (
-        <div className="bg-white rounded-lg shadow-xl w-96 h-[500px] flex flex-col relative">
+        <div className="bg-white rounded-lg shadow-xl w-96 h-[500px] flex flex-col">
           <div className="bg-blue-500 text-white p-4 rounded-t-lg flex items-center">
             <button
               onClick={handleNewChat}
@@ -155,10 +134,7 @@ const ChatbotWidget = () => {
               <X size={20} />
             </button>
           </div>
-          <div
-            className="flex-1 overflow-y-auto p-4 bg-gray-50"
-            ref={chatContainerRef}
-          >
+          <div className="flex-1 overflow-y-auto p-4 bg-gray-50 relative">
             {messages.length === 0 ? (
               <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-600">
                 <p className="text-lg font-semibold">Welcome to S3CloudHub</p>
@@ -177,15 +153,6 @@ const ChatbotWidget = () => {
               </div>
             )}
             <div ref={messagesEndRef} />
-            {!isAtBottom && messages.length > 0 && (
-              <button
-                className="absolute bottom-16 left-1/2 transform -translate-x-1/2 p-2 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition-colors"
-                onClick={scrollToBottom}
-                title="Go to Bottom"
-              >
-                <ArrowDownCircle size={24} />
-              </button>
-            )}
           </div>
           <div className="p-4 border-t flex items-center">
             <div className="flex-1 flex items-center">
