@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { MessageCircle, Send, X } from 'lucide-react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent';
 const GEMINI_API_KEY = process.env.REACT_APP_GEMINI_API_KEY;
@@ -41,7 +43,8 @@ const ChatbotWidget = () => {
       const candidates = response.data.candidates;
       if (candidates && candidates.length > 0) {
         const candidate = candidates[0];
-        const content = candidate.content?.parts?.[0]?.text || 'No content available';
+        let content = candidate.content?.parts?.[0]?.text || 'No content available';
+        content = content.replace(/\*\*\*/g, ''); // Remove triple asterisks
         return content;
       } else {
         return 'No response from AI.';
@@ -87,9 +90,15 @@ const ChatbotWidget = () => {
           <div className="flex-1 overflow-y-auto p-4">
             {messages.map((message, index) => (
               <div key={index} className={`mb-2 ${message.sender === 'user' ? 'text-right' : 'text-left'}`}>
-                <span className={`inline-block p-2 rounded-lg ${message.sender === 'user' ? 'bg-blue-100' : 'bg-gray-200'}`}>
-                  {message.text}
-                </span>
+                {message.sender === 'bot' && message.text.includes('```') ? (
+                  <SyntaxHighlighter language="javascript" style={coy}>
+                    {message.text.replace(/```/g, '')}
+                  </SyntaxHighlighter>
+                ) : (
+                  <span className={`inline-block p-2 rounded-lg ${message.sender === 'user' ? 'bg-blue-100' : 'bg-gray-200'}`}>
+                    {message.text}
+                  </span>
+                )}
               </div>
             ))}
             {isLoading && (
